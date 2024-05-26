@@ -5,22 +5,21 @@
   padding: 0;
 }
 
-.link {
-  text-decoration: none;
-  color: black;
-  font-size: 18px;
-  font-weight: 700;
-}
-
 .active {
   color: #4fa94d;
 }
 
 .nav {
   padding: 10px 24px;
-  /* border-bottom: 1px solid black; */
   box-shadow: 0px 10px 12px 3px rgba(71, 167, 68, 0.56);
   margin-bottom: 24px;
+}
+
+.link {
+  text-decoration: none;
+  color: black;
+  font-size: 18px;
+  font-weight: 700;
 }
 
 .link:first-of-type {

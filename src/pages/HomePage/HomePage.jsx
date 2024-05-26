@@ -1,9 +1,8 @@
 import { Link, useLocation } from "react-router-dom";
 import { fetchMoviesTrend } from "../../service/movie-api";
-import css from "./HomePage.module.css";
 import { useEffect, useState } from "react";
+import css from "./HomePage.module.css";
 import Loader from "../../components/Loader/Loader";
-
 import toast from "react-hot-toast";
 
 const notify = () =>

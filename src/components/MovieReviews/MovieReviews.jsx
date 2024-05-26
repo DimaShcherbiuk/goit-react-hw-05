@@ -1,9 +1,9 @@
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import toast from "react-hot-toast";
 import { FaUserCircle } from "react-icons/fa";
-import css from "./MovieReviews.module.css";
 import { fetchMovieReviews } from "../../service/movie-api";
+import css from "./MovieReviews.module.css";
+import toast from "react-hot-toast";
 
 const notify = () =>
   toast.error("Something went wrong. Please, try again!", {

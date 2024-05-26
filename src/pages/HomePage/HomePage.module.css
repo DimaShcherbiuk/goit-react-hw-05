@@ -1,0 +1,18 @@
+.homePage {
+  padding-left: 24px;
+  color: black;
+  margin-bottom: 24px;
+}
+
+.movieList {
+  list-style: square;
+  font-size: 20px;
+}
+
+.item {
+  color: black;
+}
+.item:hover,
+.item:focus {
+  color: #4fa94d;
+}

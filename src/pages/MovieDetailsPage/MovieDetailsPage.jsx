@@ -1,11 +1,10 @@
 import { Suspense, useEffect, useRef, useState } from "react";
-import toast from "react-hot-toast";
 import { Link, Outlet, useLocation, useParams } from "react-router-dom";
-import Loader from "../../components/Loader/Loader";
 import { GoArrowLeft } from "react-icons/go";
-
-import css from "./MovieDetailsPage.module.css";
 import { fetchMovieDetails } from "../../service/movie-api";
+import toast from "react-hot-toast";
+import Loader from "../../components/Loader/Loader";
+import css from "./MovieDetailsPage.module.css";
 
 const notify = () =>
   toast.error("Something went wrong. Please, try again!", {
