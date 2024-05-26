@@ -28,7 +28,6 @@ const MovieCast = () => {
         setCastList(data.cast);
       } catch (error) {
         notify();
-        console.log(error);
       }
     };
     getMovieCast(movieId);

@@ -1,9 +1,10 @@
-import { Link, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { fetchMoviesTrend } from "../../service/movie-api";
 import { useEffect, useState } from "react";
 import css from "./HomePage.module.css";
 import Loader from "../../components/Loader/Loader";
 import toast from "react-hot-toast";
+import MovieList from "../../components/MovieList/MovieList";
 
 const notify = () =>
   toast.error("Something went wrong. Please, try again!", {
@@ -30,8 +31,7 @@ const HomePage = () => {
         const data = await fetchMoviesTrend();
         setTrendMovies(data.results);
       } catch (error) {
-        console.log(error);
-        notify();
+        notify(error);
       } finally {
         setLoading(false);
       }
@@ -44,17 +44,7 @@ const HomePage = () => {
       <div className={css.homePage}>
         <h1>Trending Today</h1>
         <ul className={css.movieList}>
-          {trendMovies.map((movie) => (
-            <li key={movie.id}>
-              <Link
-                to={`/movies/${movie.id}`}
-                state={{ from: location }}
-                className={css.item}
-              >
-                {movie.title}
-              </Link>
-            </li>
-          ))}
+          <MovieList location={location} movies={trendMovies} />{" "}
           {loading && <Loader />}
         </ul>
       </div>

@@ -36,12 +36,13 @@ const MoviesPage = () => {
     setMoviesList([]);
     setLoading(true);
     const getMovieByKeyword = async (movieName) => {
+      setLoading(true);
       try {
         await fetchMoviesSearch(movieName).then((data) => {
           if (!data.results.length) {
             setLoading(false);
-            setError(true);
-            return console.log(
+            // setError(true);
+            return notify(
               "There is no movies with this request. Please, try again"
             );
           }
@@ -51,7 +52,6 @@ const MoviesPage = () => {
         });
       } catch (error) {
         notify("Something went wrong. Please, try again!");
-        console.log(error);
       }
     };
     getMovieByKeyword(movieName);

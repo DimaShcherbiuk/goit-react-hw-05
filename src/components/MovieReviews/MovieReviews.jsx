@@ -27,8 +27,7 @@ const MovieReviews = () => {
         const data = await fetchMovieReviews(movieId);
         setReviewsList(data.results);
       } catch (error) {
-        notify();
-        console.log(error);
+        notify(error);
       }
     };
     getMovieReviews(movieId);
