@@ -9,7 +9,6 @@ export default function SearchBar({ onSubmit }) {
         placeholder="Enter the title to search"
         autoComplete="off"
         autoFocus
-        pattern="^[a-zA-Za-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
         required
         className={css.input}
       />

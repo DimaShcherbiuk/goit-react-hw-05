@@ -1,5 +1,5 @@
-import { Suspense } from "react";
 import { NavLink, Outlet } from "react-router-dom";
+import { Suspense } from "react";
 import css from "./Navigation.module.css";
 import Loader from "../Loader/Loader";
 import clsx from "clsx";

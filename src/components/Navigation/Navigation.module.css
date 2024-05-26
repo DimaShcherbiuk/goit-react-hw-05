@@ -1,14 +1,3 @@
-.container {
-  display: flex;
-  gap: 12px;
-  list-style: none;
-  padding: 0;
-}
-
-.active {
-  color: #4fa94d;
-}
-
 .nav {
   padding: 10px 24px;
   box-shadow: 0px 10px 12px 3px rgba(71, 167, 68, 0.56);
@@ -28,5 +17,8 @@
 
 .link:hover,
 .link:focus {
+  color: #4fa94d;
+}
+.active {
   color: #4fa94d;
 }
