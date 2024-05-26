@@ -41,7 +41,7 @@ const MoviesPage = () => {
         await fetchMoviesSearch(movieName).then((data) => {
           if (!data.results.length) {
             setLoading(false);
-            // setError(true);
+            setError(true);
             return notify(
               "There is no movies with this request. Please, try again"
             );
