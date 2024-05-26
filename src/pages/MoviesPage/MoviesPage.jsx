@@ -25,7 +25,7 @@ const MoviesPage = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const movieName = searchParams.get("movieName") ?? "";
   const [moviesList, setMoviesList] = useState([]);
-  const [error, setError] = useState(false);
+  const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -34,33 +34,39 @@ const MoviesPage = () => {
       return;
     }
     setMoviesList([]);
-    setLoading(true);
     const getMovieByKeyword = async (movieName) => {
       setLoading(true);
+      setError(null);
       try {
-        await fetchMoviesSearch(movieName).then((data) => {
-          if (!data.results.length) {
-            setLoading(false);
-            setError(true);
-            return notify(
-              "There is no movies with this request. Please, try again"
-            );
-          }
-          setError(false);
-          setMoviesList(data.results);
-          setLoading(false);
-        });
+        const data = await fetchMoviesSearch(movieName);
+        if (!data.results.length) {
+          throw new Error(
+            "There are no movies with this request. Please, try again."
+          );
+        }
+        setMoviesList(data.results);
       } catch (error) {
-        notify("Something went wrong. Please, try again!");
+        setError(error.message);
+        notify(error.message);
+      } finally {
+        setLoading(false);
       }
     };
+
     getMovieByKeyword(movieName);
   }, [movieName]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     const searchForm = e.currentTarget;
-    setSearchParams({ movieName: searchForm.elements.movieName.value });
+    const newMovieName = searchForm.elements.movieName.value.trim();
+
+    if (newMovieName === "") {
+      notify("Please, enter the keyword!");
+      return;
+    }
+
+    setSearchParams({ movieName: newMovieName });
     searchForm.reset();
   };
 
@@ -68,9 +74,7 @@ const MoviesPage = () => {
     <div className="container">
       <div className={css.moviesPage}>
         <SearchBar onSubmit={handleSubmit} />
-        {error && (
-          <p>There is no movies with this request. Please, try again</p>
-        )}
+        {error && <p className={css.errorMessage}>{error}</p>}
         <MovieList movies={moviesList} location={location} />
         {loading && <Loader />}
       </div>

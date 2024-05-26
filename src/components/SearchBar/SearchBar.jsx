@@ -6,7 +6,7 @@ export default function SearchBar({ onSubmit }) {
       <input
         type="text"
         name="movieName"
-        placeholder="Enter the title to search"
+        placeholder="Search for movies..."
         autoComplete="off"
         autoFocus
         required
